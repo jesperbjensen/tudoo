@@ -8,8 +8,6 @@ class TodoWidget
     @template = load_template("todo_widget")
     @item_template = load_template("todo_item")
 
-    $("#screen").html("Loading")
-    
     @render()
 
     @init_item_actions()
@@ -63,7 +61,7 @@ class TodoWidget
 
 class TodoData
   load: ->
-    @data = JSON.parse(localStorage.getItem("todo"));
+    #@data = JSON.parse(localStorage.getItem("todo"));
     @data = [{text: "Hold me to delete"}] unless @data
     items: @data
   add_item: (text)->

@@ -12,7 +12,6 @@
       this.data = new TodoData;
       this.template = load_template("todo_widget");
       this.item_template = load_template("todo_item");
-      $("#screen").html("Loading");
       this.render();
       this.init_item_actions();
       return this.init_form();
@@ -70,7 +69,6 @@
   TodoData = (function() {
     function TodoData() {}
     TodoData.prototype.load = function() {
-      this.data = JSON.parse(localStorage.getItem("todo"));
       if (!this.data) {
         this.data = [
           {
