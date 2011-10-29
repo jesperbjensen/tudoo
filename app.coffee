@@ -38,11 +38,13 @@ class TodoWidget
     @timeout_delete = setTimeout => 
       @delete_item(event.target)
     , 1000
+    false
 
   item_up: (event) ->
     clearTimeout(@timeout_delete)
     clearTimeout(@timeout_strike)
     $(event.target).removeClass("deleting")
+    false
 
   init_form: ->
     @add_item_submit = $("#add_item_submit")
@@ -96,8 +98,8 @@ log = (message) ->
 
 $.fn.extend {
   disableSelection: ->
-    $(this).each ->
-      $(this).onselectstart = ->
+    this.each ->
+      this.onselectstart = ->
         return false
 
       this.unselectable = "on";

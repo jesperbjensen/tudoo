@@ -35,14 +35,16 @@
       this.timeout_strike = setTimeout(__bind(function() {
         return $(event.target).addClass("deleting");
       }, this), 500);
-      return this.timeout_delete = setTimeout(__bind(function() {
+      this.timeout_delete = setTimeout(__bind(function() {
         return this.delete_item(event.target);
       }, this), 1000);
+      return false;
     };
     TodoWidget.prototype.item_up = function(event) {
       clearTimeout(this.timeout_delete);
       clearTimeout(this.timeout_strike);
-      return $(event.target).removeClass("deleting");
+      $(event.target).removeClass("deleting");
+      return false;
     };
     TodoWidget.prototype.init_form = function() {
       this.add_item_submit = $("#add_item_submit");
@@ -119,8 +121,8 @@
   };
   $.fn.extend({
     disableSelection: function() {
-      return $(this).each(function() {
-        $(this).onselectstart = function() {
+      return this.each(function() {
+        this.onselectstart = function() {
           return false;
         };
         this.unselectable = "on";
