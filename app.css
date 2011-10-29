@@ -1,0 +1,80 @@
+body {
+  font-family: "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+  background-color: #F6F6F6;
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 48px;
+  font-family: 'Poly', serif;
+  color: #333;
+  text-align: left;
+}
+
+#seal {
+  position: absolute;
+  right:-27px;
+  top:23px;
+  background: #eee;
+  font-size: 80%;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#seal a {
+  color: #333;
+  text-decoration: none;
+}
+
+#container {
+  margin: 0 auto;
+  width: 500px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 15px;
+}
+
+ul li label.deleting {
+  text-decoration:line-through;
+}
+
+ul li input[type=checkbox] {
+  margin-right: 10px;
+  display: block;
+  float: left;
+  margin-top: 5px;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 40px 0 40px 0;
+}
+
+fieldset input {
+  padding: 3px;
+  font-size: 18px;
+  border: 1px solid #aaa;
+  outline:none;
+  border-radius: 5px;
+}
+
+fieldset input:focus {
+  box-shadow: 0px 0px 5px #aaa;
+}
+
+fieldset input[type=submit] {
+  margin-left: 5px;
+  background-color: #eee;
+  padding: 3px 5px;
+}
