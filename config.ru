@@ -1,5 +1,8 @@
-map "/" do
-  run Rack::File.new("/app/index.html")
-end
+path = File.dirname(__FILE__)
 
-run Rack::Directory.new("/app")
+map "/" do
+  run Rack::File.new("#{path}/index.html")
+end
+map "/public" do
+  run Rack::Directory.new("#{path}/public")
+end
