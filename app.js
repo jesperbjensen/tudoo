@@ -32,6 +32,7 @@
       return $("#items li label").live("mousedown", this.item_down).live("mouseup", this.item_up).live("touchstart", this.item_down).live("touchend", this.item_up);
     };
     TodoWidget.prototype.item_down = function(event) {
+      e.preventDefault();
       this.timeout_strike = setTimeout(__bind(function() {
         return $(event.target).addClass("deleting");
       }, this), 500);
@@ -41,6 +42,7 @@
       return false;
     };
     TodoWidget.prototype.item_up = function(event) {
+      e.preventDefault();
       clearTimeout(this.timeout_delete);
       clearTimeout(this.timeout_strike);
       $(event.target).removeClass("deleting");

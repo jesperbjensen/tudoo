@@ -30,6 +30,7 @@ class TodoWidget
 
 
   item_down: (event) =>
+    e.preventDefault()
     # We notify the user that they are deleting
     @timeout_strike = setTimeout => 
       $(event.target).addClass("deleting")
@@ -41,6 +42,7 @@ class TodoWidget
     false
 
   item_up: (event) ->
+    e.preventDefault()
     clearTimeout(@timeout_delete)
     clearTimeout(@timeout_strike)
     $(event.target).removeClass("deleting")
