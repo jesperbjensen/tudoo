@@ -7,7 +7,9 @@
     return todo_widget.init();
   });
   TodoWidget = (function() {
-    function TodoWidget() {}
+    function TodoWidget() {
+      this.item_down = __bind(this.item_down, this);
+    }
     TodoWidget.prototype.init = function() {
       this.data = new TodoData;
       this.template = load_template("todo_widget");
@@ -26,21 +28,20 @@
     TodoWidget.prototype.init_item_actions = function() {
       this.timeout_delete = 0;
       this.timeout_strike = 0;
-      $("#items li label").live("mousedown", __bind(function(event) {
-        this.timeout_strike = setTimeout(__bind(function() {
-          return $(event.target).addClass("deleting");
-        }, this), 500);
-        return this.timeout_delete = setTimeout(__bind(function() {
-          return this.delete_item(event.target);
-        }, this), 1000);
-      }, this)).live('mouseup', __bind(function(event) {
-        clearTimeout(this.timeout_delete);
-        clearTimeout(this.timeout_strike);
-        return $(event.target).removeClass("deleting");
-      }, this));
-      return $("#items li input").live("change", __bind(function(event) {
-        return this.update_item(event.target);
-      }, this));
+      return $("#items li label").live("mousedown", this.item_down).live("mouseup", this.item_up).live("touchstart", this.item_down).live("touchend", this.item_up);
+    };
+    TodoWidget.prototype.item_down = function(event) {
+      this.timeout_strike = setTimeout(__bind(function() {
+        return $(event.target).addClass("deleting");
+      }, this), 500);
+      return this.timeout_delete = setTimeout(__bind(function() {
+        return this.delete_item(event.target);
+      }, this), 1000);
+    };
+    TodoWidget.prototype.item_up = function(event) {
+      clearTimeout(this.timeout_delete);
+      clearTimeout(this.timeout_strike);
+      return $(event.target).removeClass("deleting");
     };
     TodoWidget.prototype.update_item = function(checkbox) {};
     TodoWidget.prototype.init_form = function() {

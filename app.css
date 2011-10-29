@@ -59,6 +59,10 @@ ul li {
   user-select: none;
 }
 
+body {
+  -webkit-user-select: none;
+}
+
 ul li label.deleting {
   text-decoration:line-through;
 }

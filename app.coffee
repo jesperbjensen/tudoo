@@ -22,22 +22,26 @@ class TodoWidget
   init_item_actions: ->
     @timeout_delete = 0
     @timeout_strike = 0 
-    $("#items li label").live "mousedown", (event) =>
-        # We notify the user that they are deleting
-        @timeout_strike = setTimeout => 
-          $(event.target).addClass("deleting")
-        , 500
-        # We are deleting the item, after one secound
-        @timeout_delete = setTimeout => 
-          @delete_item(event.target)
-        , 1000
-    .live 'mouseup', (event) =>
-        clearTimeout(@timeout_delete)
-        clearTimeout(@timeout_strike)
-        $(event.target).removeClass("deleting")
-    
-    $("#items li input").live "change", (event) =>
-      @update_item(event.target)
+    $("#items li label").live("mousedown", @item_down)
+      .live("mouseup", @item_up)
+      .live("touchstart", @item_down)
+      .live("touchend", @item_up)
+
+
+  item_down: (event) =>
+    # We notify the user that they are deleting
+    @timeout_strike = setTimeout => 
+      $(event.target).addClass("deleting")
+    , 500
+    # We are deleting the item, after one secound
+    @timeout_delete = setTimeout => 
+      @delete_item(event.target)
+    , 1000
+
+  item_up: (event) ->
+    clearTimeout(@timeout_delete)
+    clearTimeout(@timeout_strike)
+    $(event.target).removeClass("deleting")
 
   update_item: (checkbox) ->
 
