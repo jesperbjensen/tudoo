@@ -19,6 +19,8 @@ h1 {
   font-size: 80%;
   -moz-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
   border-top: 2px solid #ddd;
   border-bottom: 2px solid #ddd;
   padding-left: 20px;
