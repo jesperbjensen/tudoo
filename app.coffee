@@ -1,4 +1,5 @@
 $ ->
+  alert "loaded"
   todo_widget = new TodoWidget
   todo_widget.init()
 

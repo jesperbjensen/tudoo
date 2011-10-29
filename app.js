@@ -3,6 +3,7 @@
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   $(function() {
     var todo_widget;
+    alert("loaded");
     todo_widget = new TodoWidget;
     return todo_widget.init();
   });
