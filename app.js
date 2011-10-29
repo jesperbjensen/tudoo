@@ -3,7 +3,6 @@
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   $(function() {
     var todo_widget;
-    alert("loaded");
     todo_widget = new TodoWidget;
     return todo_widget.init();
   });
@@ -13,6 +12,7 @@
       this.data = new TodoData;
       this.template = load_template("todo_widget");
       this.item_template = load_template("todo_item");
+      $("#screen").html("Loading");
       this.render();
       this.init_item_actions();
       return this.init_form();

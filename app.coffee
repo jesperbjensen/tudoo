@@ -1,5 +1,4 @@
 $ ->
-  alert "loaded"
   todo_widget = new TodoWidget
   todo_widget.init()
 
@@ -9,6 +8,8 @@ class TodoWidget
     @template = load_template("todo_widget")
     @item_template = load_template("todo_item")
 
+    $("#screen").html("Loading")
+    
     @render()
 
     @init_item_actions()
