@@ -61,7 +61,8 @@ class TodoWidget
 
 class TodoData
   load: ->
-    #@data = JSON.parse(localStorage.getItem("todo"));
+    @local_data = localStorage.getItem("todo");
+    @data = JSON.parse(@local_data) if @local_data;
     @data = [{text: "Hold me to delete"}] unless @data
     items: @data
   add_item: (text)->

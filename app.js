@@ -69,6 +69,10 @@
   TodoData = (function() {
     function TodoData() {}
     TodoData.prototype.load = function() {
+      this.local_data = localStorage.getItem("todo");
+      if (this.local_data) {
+        this.data = JSON.parse(this.local_data);
+      }
       if (!this.data) {
         this.data = [
           {
