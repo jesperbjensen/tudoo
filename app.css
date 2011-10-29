@@ -35,6 +35,14 @@ h1 {
   width: 500px;
 }
 
+footer {
+  font-size: 70%;
+  color: #ddd;
+}
+footer a {
+  color: #ddd; 
+}
+
 ul {
   list-style: none;
   padding: 0;
