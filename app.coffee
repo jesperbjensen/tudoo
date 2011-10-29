@@ -31,11 +31,16 @@ class TodoWidget
         @timeout_delete = setTimeout => 
           @delete_item(event.target)
         , 1000
-
     .live 'mouseup', (event) =>
         clearTimeout(@timeout_delete)
         clearTimeout(@timeout_strike)
         $(event.target).removeClass("deleting")
+    
+    $("#items li input").live "change", (event) =>
+      @update_item(event.target)
+
+  update_item: (checkbox) ->
+
 
   init_form: ->
     @add_item_submit = $("#add_item_submit")

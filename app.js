@@ -26,7 +26,7 @@
     TodoWidget.prototype.init_item_actions = function() {
       this.timeout_delete = 0;
       this.timeout_strike = 0;
-      return $("#items li label").live("mousedown", __bind(function(event) {
+      $("#items li label").live("mousedown", __bind(function(event) {
         this.timeout_strike = setTimeout(__bind(function() {
           return $(event.target).addClass("deleting");
         }, this), 500);
@@ -38,7 +38,11 @@
         clearTimeout(this.timeout_strike);
         return $(event.target).removeClass("deleting");
       }, this));
+      return $("#items li input").live("change", __bind(function(event) {
+        return this.update_item(event.target);
+      }, this));
     };
+    TodoWidget.prototype.update_item = function(checkbox) {};
     TodoWidget.prototype.init_form = function() {
       this.add_item_submit = $("#add_item_submit");
       this.add_item_text = $("#add_item_text");

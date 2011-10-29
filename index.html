@@ -15,7 +15,7 @@
       <h1>tudoo</h1>
       <ul id="items">
         <% _.each(items, function(item) { %>
-          <li><label><input type="checkbox"/><%=item.text %></label></li>
+          <li><label><%=item.text %></label></li>
         <% }); %>
       </ul>
       <fieldset>
@@ -25,7 +25,7 @@
       </fieldset>
     </script>
     <script id="todo_item" type="text/template">
-      <li><label><input type="checkbox"/><%=item.text %></label></li>
+      <li><label><%=item.text %></label></li>
     </script>
     <div id="seal">
       <a href="http://deldy.dk">a <strong>Deldy</strong> app</a>
