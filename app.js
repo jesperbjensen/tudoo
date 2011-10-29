@@ -28,6 +28,7 @@
     TodoWidget.prototype.init_item_actions = function() {
       this.timeout_delete = 0;
       this.timeout_strike = 0;
+      $("#items li").disableSelection();
       return $("#items li label").live("mousedown", this.item_down).live("mouseup", this.item_up).live("touchstart", this.item_down).live("touchend", this.item_up);
     };
     TodoWidget.prototype.item_down = function(event) {
@@ -43,7 +44,6 @@
       clearTimeout(this.timeout_strike);
       return $(event.target).removeClass("deleting");
     };
-    TodoWidget.prototype.update_item = function(checkbox) {};
     TodoWidget.prototype.init_form = function() {
       this.add_item_submit = $("#add_item_submit");
       this.add_item_text = $("#add_item_text");
@@ -65,9 +65,10 @@
     TodoWidget.prototype.add_item = function(text) {
       var item;
       item = this.data.add_item(text);
-      return $("#items").append(this.item_template({
+      $("#items").append(this.item_template({
         item: item
       }));
+      return $("#items li").disableSelection();
     };
     return TodoWidget;
   })();
@@ -116,4 +117,16 @@
   log = function(message) {
     return console.log(message);
   };
+  $.fn.extend({
+    disableSelection: function() {
+      return $(this).each(function() {
+        $(this).onselectstart = function() {
+          return false;
+        };
+        this.unselectable = "on";
+        $(this).css('-moz-user-select', 'none');
+        return $(this).css('-webkit-user-select', 'none');
+      });
+    }
+  });
 }).call(this);

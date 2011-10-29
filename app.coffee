@@ -22,6 +22,7 @@ class TodoWidget
   init_item_actions: ->
     @timeout_delete = 0
     @timeout_strike = 0 
+    $("#items li").disableSelection()
     $("#items li label").live("mousedown", @item_down)
       .live("mouseup", @item_up)
       .live("touchstart", @item_down)
@@ -42,9 +43,6 @@ class TodoWidget
     clearTimeout(@timeout_delete)
     clearTimeout(@timeout_strike)
     $(event.target).removeClass("deleting")
-
-  update_item: (checkbox) ->
-
 
   init_form: ->
     @add_item_submit = $("#add_item_submit")
@@ -67,6 +65,7 @@ class TodoWidget
   add_item: (text) ->
     item = @data.add_item(text)
     $("#items").append(@item_template({item: item}))
+    $("#items li").disableSelection()
 
 class TodoData
   load: ->
@@ -94,3 +93,14 @@ set_screen = (html) ->
 
 log = (message) ->
   console.log message
+
+$.fn.extend {
+  disableSelection: ->
+    $(this).each ->
+      $(this).onselectstart = ->
+        return false
+
+      this.unselectable = "on";
+      $(this).css '-moz-user-select', 'none'
+      $(this).css '-webkit-user-select', 'none'
+}
