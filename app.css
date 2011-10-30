@@ -1,3 +1,25 @@
+/* Requirements */
+
+.check-requirements {
+  display:none;
+}
+
+.js.localstorage .check-requirements {
+  display: block;
+}
+
+.js .warn-no-js {
+  display:none;
+}
+
+.warn-no-localstorage {
+  display:none;
+}
+
+.no-localstorage .warn-no-localstorage {
+  display:block;
+}
+
 body {
   font-family: "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
   background-color: #F6F6F6;

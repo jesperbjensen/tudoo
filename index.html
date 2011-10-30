@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>tudoo</title>
-    <meta name = "viewport" content = "width=320px, user-scalable=no, target-densitydpi=medium-dpi";">
+    <meta name = "viewport" content = "width=320px, user-scalable=no, target-densitydpi=medium-dpi">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="stylesheet" type="text/css" href="normalize.css" />
     <link href='http://fonts.googleapis.com/css?family=Poly' rel='stylesheet' type='text/css'>
@@ -10,6 +10,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.1.7/underscore-min.js" charset="utf-8"></script>
     <script type="text/javascript" src="app.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
   </head>
   <body>
     <script id="todo_widget" type="text/template">
@@ -32,10 +33,19 @@
       <a href="http://deldy.dk">a <strong>Deldy</strong> app</a>
     </div>
     <div id="container">
-      <div id="screen">
+      <div class="warn-no-js">
         <h1>No Javascript</br>No fun</h1>
         <p>Enable Javascript to make this app work.<p/>
         <p><strong>Alternative:</strong> Use pen and paper</p>
+      </div>    
+      <div class="warn-no-localstorage">
+        <h1>You are using a old browser</h1>
+        <p> - without Web Storage.</p>
+        <p>You will not be able to save your todo items.</p>
+        <p>Get a new browser to use this application.</p>
+        <p>I suggest <a href="http://www.google.com/chrome">Google Chrome</a>.       
+      </div>
+      <div id="screen" class="check-requirements">
       </div>
       <footer>
         The source is available on <a href="https://github.com/deldy/tudoo">github</a>
